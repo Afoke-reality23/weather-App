@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /*overflow: hidden;*/
+  color: #fff;
+}
+.map_overlay {
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+  position: absolute; /* Ensure it sits over the map */
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+.content {
+  position: relative;
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: space;
+  height: 100%;
+  justify-content: space-between;
+}
+#map {
+  height: 100vh;
+  width: 100vw;
+}
+/*remove all map intrinsic controls */
+
+.leaflet-touch .leaflet-control-geocoder,
+.leaflet-touch .leaflet-bar {
+  display: none;
+}
+
+button {
+  color: black;
+}
