@@ -1,59 +1,129 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Weather App</title>
     <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      data.data.current_response.current.condition.wind_degreecurrent_response.current.condition.wind_degree="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    data.data.current_response.current.condition.wind_degreecurrent_response.current.condition.wind_degree="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
     />
     <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"
     />
     <link rel="stylesheet" href="app.css" type="text/css" />
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-      defer
-    ></script>
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+        defer
+        ></script>
     <script
-      src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"
-      defer
-    ></script>
+        src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"
+        defer
+        ></script>
     <script src="app.js" defer></script>
-  </head>
-  <body>
+    <!--<script src="test.js" defer></script>-->
+</head>
+<body>
     <div class="parent">
-      <div id="map">
-        <div class="map_overlay"></div>
-        <div class="content">
-          <div class="weather_data">
-            <div class="search-bar">
-              <input type="search" name="" id="search" />
-              <button id="btn">search</button>
+        <div id="map">
+            <div class="map_overlay"></div>
+            <div class="content">
+                <div class="weather_data">
+                    <div class="search-bar">
+                        <input type="search" name="" id="search" />
+                        <button id="btn">search</button>
+                    </div>
+                    <div class="w-data">
+                        <div class="date-time">
+                            <p class="day">
+                            </p>
+                            <p class="date">
+                            </p>
+                            <p class="time">
+                            </p>
+                        </div>
+                        <div class="main_img_div">
+                            <img src="" alt="" class="condition_img" />
+                        </div>
+                        <div class="condition_text_img">
+                            <img src="" alt="" class="sub_condition_img" />
+                            <p class="condition_text">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="current_temp">
+                        <div class="temp_div">
+                            <p>
+                                current temp
+                            </p>
+                            <p class="temp">
+                                234
+                            </p>
+                        </div>
+                        <img src="images.png" alt="" width="50px">
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div class="air_condition">
+                        <div class="wind">
+                            <p>
+                                Wind
+                            </p>
+                            <span>50km</span>
+                        </div>
+                        <div class="pressure">
+                            <p>
+                                Pressure
+                            </p>
+                            <span>50km</span>
+                        </div>
+                        <div class="humidity">
+                            <p>
+                                Humidity
+                            </p>
+                            <span>50km</span>
+                        </div>
+                        <span>5km</span>
+                    </div>
+                    <div class="next_four_days">
+                        <div class="day1">
+                            <span>wind</span>
+                            <img src="cloud.png" alt="">
+                            <span>text</span>
+                            <span>345km</span>
+                            <span class="next_temp">50c</span>
+                        </div>
+                        <div class="day2">
+                            <span>wind</span>
+                            <img src="cloud.png" alt="">
+                            <span>text</span>
+                            <span>345km</span>
+                            <span class="next_temp">50c</span>
+                        </div>
+                        <div class="day3">
+                            <span>wind</span>
+                            <img src="cloud.png" alt="">
+                            <span>text</span>
+                            <span>345km</span>
+                            <span class="next_temp">50c</span>
+                        </div>
+                        <div class="day4">
+                            <span>wind</span>
+                            <img src="cloud.png" alt="">
+                            <span>text</span>
+                            <span>345km</span>
+                            <span class="next_temp">50c</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="w-data">
-              <div class="date-time">
-                <p class="day"></p>
-                <p class="date"></p>
-                <p class="time"></p>
-              </div>
-              <img src="" alt="" class="condition_img" />
-              <div class="condition_text_img">
-                <img src="" alt="" class="sub_condition_img" />
-                <p class="condition_text"></p>
-              </div>
-            </div>
-          </div>
-          <div class="forecast"></div>
         </div>
-      </div>
     </div>
-  </body>
+</body>
 </html>
