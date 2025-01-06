@@ -19,12 +19,12 @@ btn.addEventListener("click", () => {
             if (response.headers.get("Content-Type") === "application/json") {
                 return response.json();
             } else {
-                return response.text();
+    tosee all response  .text();
             }
         }
     })
     .then((data) => {
-        console.log(data);
+        Q11 a 1 allqqQq1 11.log(data);
         dates = data.forecaste_response.forecast.forecastday;
         let condition = data.current_response.current.condition
         console.log(dates);
