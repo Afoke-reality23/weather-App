@@ -1,20 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
-  </head>
-  <script src="app.js" defer></script>
-  <body>
-    <!-- <form action=""> -->
-    <head>
-      Weather App
-    </head>
-    <div class="search_city">
-      <input type="search" name="" id="searchName" value="" />
-      <button id="btn">search</button>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        body {
+        }
+        .parent {
+            display: flex;
+            overflow: scroll;
+        }
+        .child{
+            width:600px;
+            height: 100px;
+            display: flex;
+            background-color: red;
+        }
+        .child >*{
+            height: 80px;
+            width: 100px;
+            border: 2px solid white;
+        }
+    </style>
+    
+</head>
+<body>
+    <div style="width:300px;height:400px;background-color:green;" class="parent">
+        <div class="child">
+
+        </div>
+        <button type="">create div</button>
     </div>
-    <!-- </form> -->
-  </body>
+    <script>
+    
+    const ch=document.querySelector('.child')
+    function createDiv(){
+        for (i =0;i<20;i++){
+            const d=document.createElement('div')
+            ch.appendChild(d)
+        }
+    }
+    document.querySelector('button').addEventListener('click',createDiv)
+    </script>
+</body>
 </html>
