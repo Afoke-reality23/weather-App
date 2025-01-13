@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /*overflow: hidden;*/
+  overflow: hidden;
 }
 .map_overlay {
   background: rgba(0, 0, 0, 0.5);
@@ -22,6 +22,7 @@
   flex-wrap: wrap;
   padding: 20px;
   height: 100%;
+  /* overflow: hidden; */
 }
 .condition_text {
   font-size: 1.5rem;
@@ -130,19 +131,20 @@ button {
 .forecast span:last-child {
   font-size: 1.5rem;
 }
-.next_four_days {
+.next_four_hours {
   display: flex;
   padding: 10px 0;
-  border-right: 1px solid green;
+  border: 1px solid green;
   border-radius: 0 10px 0 0;
+  background-color: red;
 }
-.next_four_days > div {
+.next_four_hours > div {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   padding: 0 1rem;
   border-right: 1px solid green;
 }
-.next_four_days > div > span:first-child {
+.next_four_hours > div > span:last-child {
   font-size: 1.5rem;
 }
