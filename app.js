@@ -96,7 +96,7 @@ function createHourlyDiv(datas) {
     console.log(datas[0].hour.length-1)
     for (i=0;i < 20;i++) {
         const hourlyDiv = document.createElement("div");
-        hourlyDiv.textContent = "hello";
+        //hourlyDiv.textContent = "hello";
         hourlyForecast.appendChild(hourlyDiv);
     }
     //const childDivs = hourlyForecast.querySelectorAll(".next_four_hours >*");
