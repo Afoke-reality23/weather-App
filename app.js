@@ -10,6 +10,9 @@ const condText = document.querySelector(".condition_text");
 const hoursDiv = document.querySelector('.hours')
 const hourlyForecast = document.querySelector(".next_four_hours");
 const dailyForecast = document.querySelector(".daily_forecast");
+let mapLayer=document.getElementById('map')
+
+
 
 btn.addEventListener("click", () => {
     fetch(`http://localhost:1998?client_port=${window.location.port}`, {
@@ -31,19 +34,31 @@ btn.addEventListener("click", () => {
     .then((data) => {
         console.log(data);
         let hourlyForecastData = data.forecaste_response.forecast.forecastday;
-        console.log(hourlyForecastData);
         let condition = data.current_response.current.condition;
+        let lat=data.forecaste_response.location.lat
+        let lon=data.forecaste_response.location.lon
+        setCordinates(lat,lon)
         setDayAndTime(condition);
-        // populateHourlyForecast(hourlyForecast);
         createHourlyDiv(hourlyForecastData);
-        // populateDailyForecast(hourlyForecast);
     })
     .catch((error) => {
         console.error("Failed to fetch:", error);
     });
 });
 
-let map = L.map("map").setView([51.505, -0.09], 13);
+
+function setCordinates(lat,lon){
+    if (currentMarker){
+        map.removeLayer(currentMarker)
+    }
+    map.setView([lat,lon])
+    currentMarker=L.marker([lat,lon]).addTo(map)
+}
+
+
+let map = L.map("map",{
+    dragging:false,
+}).setView([51.505, -0.09], 13);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "© OpenStreetMap contributors",
 }).addTo(map);
@@ -51,6 +66,10 @@ let currentMarker = L.marker([51.505, -0.09]).addTo(map);
 L.Control.geocoder({
     defaultMarkGeocode: true,
 }).addTo(map);
+
+
+
+
 
 function setDayAndTime(data) {
     const dateTime = new Date();
@@ -92,35 +111,34 @@ function setDayAndTime(data) {
 //     }
 //   });
 // }
-function createHourlyDiv(datas) {
-    console.log(datas[0].hour.length-1)
-    for (i=0;i < 20;i++) {
+function createHourlyDiv(data) {
+    console.log(data[0].hour.length-1)
+    for (i=0;i < data[0].hour.length-1;i++) {
         const hourlyDiv = document.createElement("div");
-        //hourlyDiv.textContent = "hello";
         hourlyForecast.appendChild(hourlyDiv);
     }
-    //const childDivs = hourlyForecast.querySelectorAll(".next_four_hours >*");
-    //childDivs.forEach((hour, index) => {
-        //while (childDivs.firstChild) {
-            //childDivs.removeChild(childDivs.firstChild);
-        //}
-        //if (datas[0].hour[index]) {
-           //const temp = document.createElement("span");
-            //const img = document.createElement("img");
-            //const time = document.createElement("span");
-            //temp.textContent = datas[0].hour[index].temp_c;
-            //img.src = datas[0].hour[index].condition.icon;
-            //index = index === 0 ? index + 1: index;
-            //const timeString = datas[0].hour[index].time;
-            //console.log(timeString);
-            //const splitTime = timeString.split(" ");
-            //time.textContent = splitTime[1];
+    const childDivs = hourlyForecast.querySelectorAll(".next_four_hours >*");
+    childDivs.forEach((hour, index) => {
+        while (childDivs.firstChild) {
+            childDivs.removeChild(childDivs.firstChild);
+        }
+        if (data[0].hour[index]) {
+           const temp = document.createElement("span");
+            const img = document.createElement("img");
+            const time = document.createElement("span");
+            temp.textContent = data[0].hour[index].temp_c;
+            img.src = data[0].hour[index].condition.icon;
+            index = index === 0 ? index + 1: index;
+            const timeString = data[0].hour[index].time;
+            console.log(timeString);
+            const splitTime = timeString.split(" ");
+            time.textContent = splitTime[1];
 
-            //hour.appendChild(temp);
-            //hour.appendChild(img);
-            //hour.appendChild(time);
-        //}
-    //});
+            hour.appendChild(temp);
+            hour.appendChild(img);
+            hour.appendChild(time);
+        }
+    });
 }
 
 // function populateDailyForecast(data) {

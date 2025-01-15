@@ -27,10 +27,9 @@
   display: flex;
   gap: 20px;
   position: relative;
-  z-index: 1500;
+  z-index: 9999;
   flex-direction: column;
   height: 100%;
-  border: 2px solid blue;
 }
 .condition_text {
   font-size: 1.5rem;
@@ -128,8 +127,6 @@ button {
   border: 1px solid green;
   /*border-radius: 0 10px 0 0;*/
   width: 600%;
-  background-color: yellow;
-  height: 100px;
 }
 .next_four_hours > div {
   display: flex;

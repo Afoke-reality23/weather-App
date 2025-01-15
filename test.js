@@ -1,6 +1,8 @@
 const hourlyForecast = document.querySelector(".next_four_hours");
 function createHourlyDiv() {
-  for (i=0;i<20;i++) {
+    data=new Array(20)
+    console.log(data)
+  for (i=0;i<data.length-1;i++) {
     const hourlyDiv = document.createElement("div");
     // hourlyDiv.textContent = "hello";
     hourlyForecast.appendChild(hourlyDiv);
