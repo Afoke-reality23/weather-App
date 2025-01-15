@@ -89,28 +89,6 @@ function setDayAndTime(data) {
     tempImg.src = data.icon;
     condText.textContent = data.text;
 }
-// function populateHourlyForecast(data) {
-//   hourlyForecast.forEach((day, index) => {
-//     console.log(index);
-//     if (data[0].hour[index]) {
-//       while (day.firstChild) {
-//         day.removeChild(day.firstChild);
-//       }
-//       const temp = document.createElement("span");
-//       const img = document.createElement("img");
-//       const time = document.createElement("span");
-//       temp.textContent = data[0].hour[index].temp_c;
-//       img.src = data[0].hour[index].condition.icon;
-//       const timeString = data[0].hour[index + 1].time;
-//       const splitTime = timeString.split(" ");
-//       time.textContent = splitTime[1];
-
-//       day.appendChild(temp);
-//       day.appendChild(img);
-//       day.appendChild(time);
-//     }
-//   });
-// }
 function createHourlyDiv(data) {
     console.log(data[0].hour.length-1)
     for (i=0;i < data[0].hour.length-1;i++) {
@@ -145,7 +123,7 @@ function createHourlyDiv(data) {
 //   while (dailyForecast.firstChild) {
 //     dailyForecast.removeChild(dailyForecast.firstChild);
 //   }
-//   for (const day of data) {
+//   for (const day of data) {hhh
 //     let divDay = document.createElement("div");
 //     console.log(dailyForecast);
 //     dailyForecast.appendChild(divDay);
