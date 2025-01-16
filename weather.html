@@ -1,46 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title></title>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title></title>
+        meta
+    </head>
     <style>
-        body {
-        }
-        .parent {
-            display: flex;
-            overflow: scroll;
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+        .parent{
+            height: 200px;
+            width: 200px;
+            border: 2px solid green;
+            padding: 20px;
+            background-color: red;
+            background-clip: content-box
         }
         .child{
-            width:600px;
-            height: 100px;
-            display: flex;
-            background-color: red;
-        }
-        .child >*{
-            height: 80px;
-            width: 100px;
-            border: 2px solid white;
+            height: 80%;
+            width: 80%;
+            border: 2px solid green;
         }
     </style>
-    
-</head>
-<body>
-    <div style="width:300px;height:400px;background-color:green;" class="parent">
-        <div class="child">
-
+    <body>
+        <div class="parent">
         </div>
-        <button type="">create div</button>
-    </div>
-    <script>
-    
-    const ch=document.querySelector('.child')
-    function createDiv(){
-        for (i =0;i<20;i++){
-            const d=document.createElement('div')
-            ch.appendChild(d)
-        }
-    }
-    document.querySelector('button').addEventListener('click',createDiv)
-    </script>
-</body>
+    </body>
 </html>

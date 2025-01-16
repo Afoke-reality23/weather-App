@@ -7,10 +7,11 @@ const mainImg = document.querySelector(".condition_img");
 const subImg = document.querySelector(".sub_condition_img");
 const tempImg = document.querySelector(".current_temp_img");
 const condText = document.querySelector(".condition_text");
+const temp=document.querySelector('.temp')
 const hoursDiv = document.querySelector('.hours')
 const hourlyForecast = document.querySelector(".next_four_hours");
 const dailyForecast = document.querySelector(".daily_forecast");
-let mapLayer=document.getElementById('map')
+const mapLayer=document.getElementById('map')
 
 
 
@@ -32,9 +33,8 @@ btn.addEventListener("click", () => {
         }
     })
     .then((data) => {
-        console.log(data);
         let hourlyForecastData = data.forecaste_response.forecast.forecastday;
-        let condition = data.current_response.current.condition;
+        let condition = data.current_response.current
         let lat=data.forecaste_response.location.lat
         let lon=data.forecaste_response.location.lon
         setCordinates(lat,lon)
@@ -84,22 +84,24 @@ function setDayAndTime(data) {
     day.textContent = currentDay;
     date.textContent = dateNum;
     time.textContent = hrmn;
-    mainImg.src = data.icon;
-    subImg.src = data.icon;
-    tempImg.src = data.icon;
-    condText.textContent = data.text;
+    mainImg.src = data.condition.icon;
+    subImg.src = data.condition.icon;
+    tempImg.src = data.condition.icon;
+    condText.textContent = data.condition.text;
+    //set temperature 
+    console.log(data)
+    temp.textContent=`${data.temp_c}°C`
 }
 function createHourlyDiv(data) {
-    console.log(data[0].hour.length-1)
+    while (hourlyForecast.firstChild){
+        hourlyForecast.removeChild(hourlyForecast.firstChild)
+    }
     for (i=0;i < data[0].hour.length-1;i++) {
         const hourlyDiv = document.createElement("div");
         hourlyForecast.appendChild(hourlyDiv);
     }
     const childDivs = hourlyForecast.querySelectorAll(".next_four_hours >*");
     childDivs.forEach((hour, index) => {
-        while (childDivs.firstChild) {
-            childDivs.removeChild(childDivs.firstChild);
-        }
         if (data[0].hour[index]) {
            const temp = document.createElement("span");
             const img = document.createElement("img");
