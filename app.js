@@ -9,9 +9,14 @@ const tempImg = document.querySelector(".current_temp_img");
 const condText = document.querySelector(".condition_text");
 const temp=document.querySelector('.temp')
 const hoursDiv = document.querySelector('.hours')
-const hourlyForecast = document.querySelector(".next_four_hours");
+const wind=document.querySelector('.wind')
+const pressure=document.querySelector('.pressure')
+const humidity=document.querySelector('.humidity')
+const hourlyForecast = document.querySelector(".next_23_hours");
+const loader=document.querySelector('.loader')
 const dailyForecast = document.querySelector(".daily_forecast");
 const mapLayer=document.getElementById('map')
+const content=document.querySelector('.main_content')
 
 
 
@@ -23,6 +28,7 @@ btn.addEventListener("click", () => {
         },
         body: search.value,
     })
+    loader.addClassList("show_loader")
     .then((response) => {
         if (response.ok) {
             if (response.headers.get("Content-Type") === "application/json") {
@@ -31,6 +37,9 @@ btn.addEventListener("click", () => {
                 return response.text();
             }
         }
+        console.log("ok")
+        loader.removeClassList("show_loader")
+        main_content.style.display='block'
     })
     .then((data) => {
         let hourlyForecastData = data.forecaste_response.forecast.forecastday;
@@ -39,6 +48,7 @@ btn.addEventListener("click", () => {
         let lon=data.forecaste_response.location.lon
         setCordinates(lat,lon)
         setDayAndTime(condition);
+        populateAirCondition(hourlyForecastData)
         createHourlyDiv(hourlyForecastData);
     })
     .catch((error) => {
@@ -92,6 +102,11 @@ function setDayAndTime(data) {
     console.log(data)
     temp.textContent=`${data.temp_c}°C`
 }
+function populateAirCondition(data){
+    wind.textContent=data.windchill_c
+    pressure.textContent=data.pressure_in
+    humidity.textContent=data.humidity
+}
 function createHourlyDiv(data) {
     while (hourlyForecast.firstChild){
         hourlyForecast.removeChild(hourlyForecast.firstChild)
@@ -100,13 +115,13 @@ function createHourlyDiv(data) {
         const hourlyDiv = document.createElement("div");
         hourlyForecast.appendChild(hourlyDiv);
     }
-    const childDivs = hourlyForecast.querySelectorAll(".next_four_hours >*");
+    const childDivs = hourlyForecast.querySelectorAll(".next_23_hours >*");
     childDivs.forEach((hour, index) => {
         if (data[0].hour[index]) {
            const temp = document.createElement("span");
             const img = document.createElement("img");
             const time = document.createElement("span");
-            temp.textContent = data[0].hour[index].temp_c;
+            temp.textContent = `${data[0].hour[index].temp_c}°c`;
             img.src = data[0].hour[index].condition.icon;
             index = index === 0 ? index + 1: index;
             const timeString = data[0].hour[index].time;

@@ -1,166 +1,247 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  /* overflow: hidden; */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden; */
 }
 #map {
-  height: 100vh;
-  width: 100vw;
+    height: 100vh;
+    width: 100vw;
 }
 /*remove all map intrinsic controls */
 .leaflet-touch .leaflet-control-geocoder,
 .leaflet-touch .leaflet-bar {
-  display: none;
+    display: none;
 }
 .map_overlay {
-  background: rgba(0, 0, 0, 0.5);
-  /* Dark overlay with 50% opacity */
-  position: absolute;
-  /* Ensure it sits over the map */
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    /* Dark overlay with 50% opacity */
+    position: absolute;
+    /* Ensure it sits over the map */
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
 }
 .content {
-  width: 100%;
-  display: flex;
-  gap: 20px;
-  position: relative;
-  z-index: 9999;
-  flex-direction: column;
-  height: 100%;
-  padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid blue;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+   
+}
+.content >*{
+}
+
+.main_content {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    padding: 20px;
+    display: none;
+}
+
+.loader {
+    display: flex;
+    align-content: end;
+    font-size: 1rem;
+    gap: 1px;
+    display: none;
+ }
+ .load{
+     display: flex;
+     margin-top: 8px;
+     gap: 2px;
+ }
+ .dot1,.dot2,.dot3{
+     border: 0.5px solid black;
+     width: 5px;
+     height: 5px;
+     border-radius: 100%;
+ }
+ .show_loader{
+    display: block;
 }
 .weather_data {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.dot1 {
+    animation: dot1 0.5s linear infinite;
+    background: white;
+}
+.dot2 {
+    animation: dot2 0.5s linear infinite;
+    background: white;
+}
+.dot3 {
+    animation: dot3 0.5s linear infinite;
+    background-color: white;
+}
+@keyframes dot1 {
+    0% {
+        background-color: #fff;
+    }
+    50% {
+        background-color: transparent;
+    }
+    100 {
+        background-color: transparent;
+    }
+}
+@keyframes dot2 {
+    0% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: white;
+    }
+    100 {
+        background-color: transparent;
+    }
+}
+@keyframes dot3 {
+    0% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: white;
+    }
 }
 .w-data {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 .date-time {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
 }
 .date {
-  font-size: 5rem;
-  color: white;
+    font-size: 5rem;
+    color: white;
 }
 .day,
 .time {
-  font-size: 1.3rem;
-  align-self: center;
+    font-size: 1.3rem;
+    align-self: center;
 }
 .day {
-  transform: translateY(2rem);
+    transform: translateY(2rem);
 }
 .time {
-  transform: translateY(-1.5rem);
+    transform: translateY(-1.5rem);
 }
 .main_img_div {
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
 }
 .main_img_div img {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 .condition_text_img {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .condition_text {
-  font-size: 1.3rem;
-  color: white;
+    font-size: 1.3rem;
+    color: white;
 }
 
 .current_temp {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .temp {
-  font-size: 5rem;
-  font-weight: bold;
-  color: white;
-  box-shadow: 1px 1px 1px grey;
-  margin-top: -1rem;
+    font-size: 5rem;
+    font-weight: bold;
+    color: white;
+    box-shadow: 1px 1px 1px grey;
+    margin-top: -1rem;
 }
 .current_temp p:first-child {
-  font-size: 1.3rem;
-  color: white;
+    font-size: 1.3rem;
+    color: white;
 }
-/* .current_temp div:last-child {
-} */
 .current_temp div:last-child img {
-  width: 80%;
-  height: 80%;
+    width: 80%;
+    height: 80%;
 }
 .forecast {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 5rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5rem;
 }
 .air_condition {
-  display: flex;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-radius: 10px;
-  padding: 20px 0;
-  background: #291b1b;
-  /* background-clip: content-box; */
+    display: flex;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 10px;
+    padding: 20px 0;
+    background: rgba(0,0,0,0.5);
+    /* background-clip: content-box; */
 }
 .air_condition > * {
-  flex-grow: 1;
-  border-right: 1px solid black;
-  padding: 0 1rem;
+    flex-grow: 1;
+    border-right: 1px solid black;
+    padding: 0 1rem;
 }
 
 .air_condition > span:last-child {
-  border: none !important;
+    border: none !important;
 }
 .air_condition p {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 .air_condition span {
-  font-size: 0.7rem;
+    font-size: 0.7rem;
+}
+.hours_div {
+    display: flex;
+    flex-direction: column;
 }
 .hours {
-  width: 100%;
-  height: 400px;
-  overflow-x: scroll;
-  position: relative;
+    width: 100%;
+    height: 400px;
+    overflow-x: scroll;
 }
 .next_hours {
-  position: absolute;
-  top: 0;
-  left: 20px;
+    align-self: end;
+    font-size: 1.2rem;
 }
-.next_four_hours {
-  display: flex;
-  padding: 10px 0;
-  width: 600%;
+.next_23_hours {
+    display: flex;
+    padding: 10px 0;
+    width: 600%;
+    gap: 10px;
 }
-.next_four_hours > div {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: 0 1rem;
-  /* border: 1px solid green; */
-  background: #291b1b;
+.next_23_hours > div {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0.5rem;
+    /* border: 1px solid green; */
+    background: rgba(0,0,0,0.5);
 }
-.next_four_hours > div > span:first-child {
-  font-size: 1.5rem;
+.next_23_hours > div > span:first-child {
+    font-size: 1.5rem;
 }
-.next_four_hours > div > span:last-child {
-  font-size: 1rem;
+.next_23_hours > div > span:last-child {
+    font-size: 1rem;
 }
